@@ -9,6 +9,3 @@ __Anggota Kelompok:__
 
 # Updates
 - 28 Oct 2020: add login page (without auth), add home page, implement routes for screen changing, implement Core & Root widgets
-
-# Build
-[Build Link](https://github.com/KucingMaboek/tabungan_kita/build/ "Go to build path")
