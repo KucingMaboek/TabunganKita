@@ -1,16 +1,8 @@
-# tabungan_kita
+# TabunganKita
+## Kelompok G SDGs 10
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+__Anggota Kelompok:__
+* Putu Rani S D G s (1824101030)
+* Iqbal Al-Mahdi (1824101030)
+* Ferdhy Dhetya Yahya (182410103071)
+>>>>>>> fc1210e68ae50d02b31c2807d59bac5b5b549460
