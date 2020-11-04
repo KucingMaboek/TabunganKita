@@ -9,3 +9,4 @@ __Anggota Kelompok:__
 
 # Updates
 - 28 Oct 2020: add login page (without auth), add home page, implement routes for screen changing, implement Core & Root widgets
+- 04 Nov 2020: add register page (without auth & form)
