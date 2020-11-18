@@ -1,35 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  static String tag = 'home-page';
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  // widget induk
-  String name = 'Kimi No Wa';
-
+class LoanTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final logo = Hero(
-      tag: 'hero',
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: CircleAvatar(
-          radius: 72.0,
-          backgroundColor: Colors.transparent,
-          backgroundImage: AssetImage('lib/assets/images/people.png'),
-        ),
-      ),
-    );
 
     final welcome = Padding(
       padding: EdgeInsets.all(8.0),
       child: Text(
-        'Welcome ${name}',
+        'Loan Tab',
         style: TextStyle(fontSize: 28.0, color: Colors.black),
       ),
     );
@@ -49,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         color: Colors.white,
       ),
       child: Column(
-        children: <Widget>[logo, welcome, lorem],
+        children: <Widget>[welcome, lorem],
       ),
     );
 

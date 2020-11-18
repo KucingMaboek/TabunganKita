@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tabungan_kita/HomePage.dart';
+import 'package:tabungan_kita/Home.dart';
 
-class LoginPage extends StatefulWidget {
-  static String tag = 'login-page';
+class Login extends StatefulWidget {
+  static String tag = 'login';
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginState createState() => _LoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: () {
-            Navigator.of(context).pushNamed(HomePage.tag);
+            Navigator.of(context).pushNamed(Home.tag);
           },
           color: Colors.lightBlueAccent,
           textColor: Colors.white,
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(30.0),
           side: BorderSide(color: Colors.lightBlueAccent)),
       onPressed: () {
-        Navigator.of(context).pushNamed(HomePage.tag);
+        Navigator.of(context).pushNamed(Home.tag);
       },
       color: Colors.lightBlueAccent,
       textColor: Colors.white,

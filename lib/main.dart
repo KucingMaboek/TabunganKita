@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tabungan_kita/HomePage.dart';
-import 'package:tabungan_kita/LoginPage.dart';
+import 'package:tabungan_kita/Home.dart';
+import 'package:tabungan_kita/Login.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
 
   final routes = <String, WidgetBuilder>{
-    LoginPage.tag: (context) => LoginPage(),
-    HomePage.tag: (context) => HomePage(),
+    Login.tag: (context) => Login(),
+    Home.tag: (context) => Home(),
   };
 
   @override
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         // fontFamily: 'Nunito',
       ),
-      home: LoginPage(),
+      home: Login(),
       routes: routes,
     );
   }
