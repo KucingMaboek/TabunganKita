@@ -3,10 +3,12 @@ TabunganKita merupakan aplikasi berbasis mobile yang dapat digunakan untuk pemin
 
 ## Kelompok G SDGs 10
 __Anggota Kelompok:__
-* Putu Rani Sugita Sari (182410103092)
-* Iqbal Al-Mahdi (182410103030)
-* Ferdhy Dhetya Yahya (182410103071)
+* Iqbal Al-Mahdi (182410103030) => [KucingMaboek](https://github.com/KucingMaboek)
+* Ferdhy Dhetya Yahya (182410103071) => [twyla19](https://github.com/twyla19)
+* Putu Rani Sugita Sari (182410103092) => [ranisari](https://github.com/ranisari)
 
 # Updates
 - 28 Oct 2020: add login page (without auth), add home page, implement routes for screen changing, implement Core & Root widgets
 - 04 Nov 2020: add register page (without auth & form)
+- 18 Nov 2020: add navbar, import fontawesome dependencies, add default tab
+- 19 Nov 2020: implement listView to savingTab, work on saving detail template
