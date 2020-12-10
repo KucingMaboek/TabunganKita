@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tabungan_kita/AccountTab.dart';
 import 'package:tabungan_kita/LoanTab.dart';
 import 'package:tabungan_kita/SavingTab.dart';
-import 'package:tabungan_kita/AccountTab.dart';
 
 class Home extends StatefulWidget {
   static String tag = 'home';
@@ -20,6 +20,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(
+          "Tabungan Kita",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+      ),
       body: PageView(
         controller: _pageController,
         children: <Widget>[
