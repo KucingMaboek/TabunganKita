@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:tabungan_kita/authentication_service.dart';
 import 'package:toast/toast.dart';
-
-import 'Login.dart';
 
 class AccountTab extends StatelessWidget {
   final _newPasswordForm = GlobalKey<FormState>();
   String _newPassword;
-
-  final _deleteAccountForm = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +59,7 @@ class AccountTab extends StatelessWidget {
                                 validator: (value) {
                                   if (value.isNotEmpty) {
                                     if (value == _newPassword) {
+                                      context.read<AuthenticationService>().changePassword(_newPassword);
                                       Toast.show("Berhasil mengubah password! ",
                                           context,
                                           duration: Toast.LENGTH_LONG,
@@ -97,68 +96,6 @@ class AccountTab extends StatelessWidget {
                           side: BorderSide(color: Colors.redAccent)),
                       onPressed: () {
                         _newPasswordForm.currentState.validate();
-                      },
-                      color: Colors.redAccent,
-                      textColor: Colors.white,
-                      child: Text('Konfirmasi'.toUpperCase()),
-                    ),
-                  ),
-                ],
-              ));
-    }
-
-    _deleteAccountDialog() {
-      showDialog(
-          context: context,
-          builder: (_) => new AlertDialog(
-                title: new Text("Hapus Akun"),
-                content: Wrap(
-                  children: [
-                    Form(
-                        key: _deleteAccountForm,
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              obscureText: true,
-                              validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'Mohon diisi';
-                                } else {
-                                  if (value == "admin") {
-                                    Toast.show(
-                                        "Akun berhasil dihapus!", context,
-                                        duration: Toast.LENGTH_LONG,
-                                        gravity: Toast.BOTTOM);
-                                    Navigator.of(context).pushNamed(Login.tag);
-                                  } else {
-                                    return "Password salah";
-                                  }
-                                }
-                                return null;
-                              },
-                              decoration: InputDecoration(
-                                  labelText: "Password",
-                                  border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(_borderRad))),
-                              textInputAction: TextInputAction.next,
-                            ),
-                          ],
-                        )),
-                  ],
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(_borderRad),
-                ),
-                actions: <Widget>[
-                  ButtonTheme(
-                    minWidth: MediaQuery.of(context).size.width,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(_borderRad),
-                          side: BorderSide(color: Colors.redAccent)),
-                      onPressed: () {
-                        _deleteAccountForm.currentState.validate();
                       },
                       color: Colors.redAccent,
                       textColor: Colors.white,
@@ -312,10 +249,9 @@ class AccountTab extends StatelessWidget {
               ListTile(
                 title: Text('Pengaturan Akun'),
               ),
-              // Text("Belom Diimplementasi"),
               TextFormField(
                 autofocus: false,
-                initialValue: "your@mail.com",
+                initialValue: context.select((AuthenticationService auth) => auth.getEmail()),
                 enabled: false,
                 decoration: InputDecoration(
                     labelText: "Email",
@@ -343,7 +279,7 @@ class AccountTab extends StatelessWidget {
       );
     }
 
-    Widget _deleteAccount() {
+    Widget _signOut() {
       return ButtonTheme(
         minWidth: MediaQuery.of(context).size.width,
         child: RaisedButton(
@@ -351,11 +287,12 @@ class AccountTab extends StatelessWidget {
               borderRadius: BorderRadius.circular(_borderRad),
               side: BorderSide(color: Colors.redAccent)),
           onPressed: () {
-            _deleteAccountDialog();
+            context.read<AuthenticationService>().signOut();
+            // Navigator.of(context).pushNamed(SignIn.tag);
           },
           color: Colors.redAccent,
           textColor: Colors.white,
-          child: Text('Hapus Akun'.toUpperCase()),
+          child: Text('Sign Out'.toUpperCase()),
         ),
       );
     }
@@ -370,7 +307,7 @@ class AccountTab extends StatelessWidget {
               _deviceConnection(),
               _userProfile(),
               _accountSetting(),
-              _deleteAccount(),
+              _signOut(),
             ],
           ),
         ),

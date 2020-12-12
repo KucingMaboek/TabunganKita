@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tabungan_kita/AccountTab.dart';
+import 'package:tabungan_kita/profile_tab.dart';
 import 'package:tabungan_kita/LoanTab.dart';
 import 'package:tabungan_kita/SavingTab.dart';
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "955210914514",
+    "firebase_url": "https://tabungan-kita.firebaseio.com",
+    "project_id": "tabungan-kita",
+    "storage_bucket": "tabungan-kita.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955210914514:android:2336fa7c138558240c6b0b",
+        "android_client_info": {
+          "package_name": "com.company.tabungan_kita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955210914514-96do4d7bgo77n8c69ipr4chhrlln3hbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-l1DT2UeAoMeLfAh4L21TCmwBEIjawpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955210914514-96do4d7bgo77n8c69ipr4chhrlln3hbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
