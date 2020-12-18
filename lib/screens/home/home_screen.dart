@@ -1,18 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tabungan_kita/profile_tab.dart';
-import 'package:tabungan_kita/LoanTab.dart';
-import 'package:tabungan_kita/SavingTab.dart';
+import 'package:tabungan_kita/constants.dart';
+import 'package:tabungan_kita/screens/saving_page/saving_page_screen.dart';
+import 'package:tabungan_kita/screens/loan_page/loan_page_screen.dart';
+import 'package:tabungan_kita/screens/profile_page/profile_page_screen.dart';
 
-class Home extends StatefulWidget {
-  static String tag = 'home';
+class HomeScreen extends StatefulWidget {
+  static String routeName = '/home';
 
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final _pageController = new PageController(initialPage: 0);
@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
           "Tabungan Kita",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: kPrimaryColor,
         elevation: 0,
       ),
       body: PageView(
@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           SavingTab(),
           LoanTab(),
-          AccountTab(),
+          ProfilePage(),
         ],
         onPageChanged: (page) {
           setState(() {
@@ -56,8 +56,8 @@ class _HomeState extends State<Home> {
               backgroundColor: Colors.redAccent),
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.userAlt),
-              label: "Akun",
-              backgroundColor: Colors.blueAccent)
+              label: "Profil",
+              backgroundColor: kPrimaryColor)
         ],
         onTap: (index) {
           setState(() {

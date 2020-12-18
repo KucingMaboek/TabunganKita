@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tabungan_kita/constants.dart';
 
 class SavingDetail extends StatelessWidget {
   final int id;
@@ -87,7 +87,7 @@ class SavingDetail extends StatelessWidget {
         decoration: new BoxDecoration(
             color: Colors.white,
             shape: BoxShape.rectangle,
-            borderRadius: new BorderRadius.circular(8.0),
+            borderRadius: new BorderRadius.circular(kBorderRad),
             boxShadow: <BoxShadow>[
               new BoxShadow(
                 color: Colors.black12,
@@ -103,7 +103,7 @@ class SavingDetail extends StatelessWidget {
         margin: new EdgeInsets.fromLTRB(20, 10, 20, 0),
         child: new RaisedButton(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(kBorderRad),
               side: BorderSide(color: Colors.redAccent)),
           onPressed: () {
             // Not Implemented yet.

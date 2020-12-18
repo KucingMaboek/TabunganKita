@@ -2,10 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tabungan_kita/Home.dart';
-import 'package:tabungan_kita/sign_in.dart';
-import 'package:tabungan_kita/sign_up.dart';
-import 'package:tabungan_kita/authentication_service.dart';
+import 'package:tabungan_kita/routes.dart';
+import 'package:tabungan_kita/screens/home/home_screen.dart';
+import 'package:tabungan_kita/screens/sign_in/sign_in_screen.dart';
+import 'package:tabungan_kita/services/authentication_service.dart';
+import 'package:tabungan_kita/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,12 +15,6 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final routes = <String, WidgetBuilder>{
-    SignIn.tag: (context) => SignIn(),
-    SignUp.tag: (context) => SignUp(),
-    Home.tag: (context) => Home(),
-  };
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -35,9 +30,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Tabungan Kita',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.lightBlue,
-        ),
+        theme: AppTheme(),
         home: AuthenticationWrapper(),
         routes: routes,
       ),
@@ -55,8 +48,8 @@ class AuthenticationWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return Home();
+      return HomeScreen();
     }
-    return SignIn();
+    return SignInScreen();
   }
 }

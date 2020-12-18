@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tabungan_kita/SavingDetail.dart';
+import 'package:tabungan_kita/screens/saving_details/saving_details_screen.dart';
 
-class SavingTab extends StatelessWidget {
+class SavingList extends StatefulWidget{
+  @override
+  _SavingListState createState() => _SavingListState();
+}
+
+class _SavingListState extends State<SavingList>{
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      body: _buildListView(context),
-    );
-  }
-
-  ListView _buildListView(BuildContext context) {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (_, index) {
