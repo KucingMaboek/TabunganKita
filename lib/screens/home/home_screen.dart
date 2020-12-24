@@ -32,8 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: PageView(
         controller: _pageController,
         children: <Widget>[
-          SavingTab(),
-          LoanTab(),
+          SavingPage(),
+          LoanPage(),
           ProfilePage(),
         ],
         onPageChanged: (page) {
@@ -49,11 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.donate),
               label: "Simpanan Wajib",
-              backgroundColor: Colors.lightGreen),
+              backgroundColor: kPrimaryColor),
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.handHoldingUsd),
               label: "Pinjaman",
-              backgroundColor: Colors.redAccent),
+              backgroundColor: kPrimaryColor),
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.userAlt),
               label: "Profil",

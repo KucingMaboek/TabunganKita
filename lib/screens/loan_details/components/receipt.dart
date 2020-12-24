@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tabungan_kita/Helper.dart';
 import 'package:tabungan_kita/constants.dart';
-import 'package:tabungan_kita/models/saving_model.dart';
+import 'package:tabungan_kita/models/loan_model.dart';
 
 class Receipt extends StatelessWidget {
-  final SavingModel model;
+  final LoanModel model;
 
   Receipt(this.model);
 
@@ -31,7 +31,7 @@ class Receipt extends StatelessWidget {
           height: 10.0,
         ),
         Text(
-          "Simpan Wajib",
+          model.purpose,
           style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
         SizedBox(
@@ -42,9 +42,17 @@ class Receipt extends StatelessWidget {
           DataColumn(label: Text("")),
         ], rows: [
           DataRow(cells: [
-            DataCell(Text("Tanggal Simpanan")),
-            DataCell(Text(kGetMonthYearFromDateTime(model.savingDate)))
+            DataCell(Text(
+              "Tanggal Peminjaman",
+            )),
+            DataCell(Text(kGetDateFromDateTime(model.requestDate)))
           ]),
+          DataRow(cells: [
+            DataCell(Text("Batas Pengembalian")),
+            DataCell(Text(kGetDateFromDateTime(model.returnDate))),
+          ]),
+          DataRow(
+              cells: [DataCell(Text("Detail")), DataCell(Text(model.detail))]),
           DataRow(
               cells: [DataCell(Text("Status")), DataCell(Text(model.status))]),
         ]),

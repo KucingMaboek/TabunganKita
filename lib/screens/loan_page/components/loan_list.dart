@@ -1,28 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tabungan_kita/Helper.dart';
 import 'package:tabungan_kita/constants.dart';
-import 'package:tabungan_kita/models/saving_model.dart';
-import 'package:tabungan_kita/screens/saving_details/saving_details_screen.dart';
+import 'package:tabungan_kita/models/loan_model.dart';
+import 'package:tabungan_kita/screens/loan_details/loan_details_screen.dart';
 import 'package:tabungan_kita/services/database_services.dart';
 
-class SavingList extends StatefulWidget {
+class LoanList extends StatefulWidget{
   @override
-  _SavingListState createState() => _SavingListState();
+  _LoanListState createState() => _LoanListState();
 }
 
-class _SavingListState extends State<SavingList> {
+class _LoanListState extends State<LoanList> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: DatabaseService.getSavings(),
+        stream: DatabaseService.getLoans(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            final savingLists = <SavingModel>[];
+            final savingLists = <LoanModel>[];
             snapshot.data.docs.forEach((element) {
-              // print(element.data());
-              savingLists.add(SavingModel.fromMap(element.data()));
+              savingLists.add(LoanModel.fromMap(element.data()));
             });
             return ListView.builder(
                 itemCount: savingLists.length,
@@ -33,18 +31,17 @@ class _SavingListState extends State<SavingList> {
                       borderRadius: BorderRadius.circular(kBorderRad),
                     ),
                     child: ListTile(
-                      title: Text(kGetMonthYearFromDateTime(
-                          savingLists[index].savingDate)),
+                      title: Text(savingLists[index].purpose),
                       subtitle: Text(savingLists[index].status),
                       leading: FaIcon(FontAwesomeIcons.receipt),
                       trailing:
-                          Text("Rp." + savingLists[index].amount.toString()),
+                      Text("Rp." + savingLists[index].amount.toString()),
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SavingDetail(savingLists[index])));
+                                    LoanDetail(savingLists[index])));
                       },
                     ),
                   );

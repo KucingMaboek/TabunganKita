@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabungan_kita/constants.dart';
 import 'package:tabungan_kita/models/saving_model.dart';
 import 'package:tabungan_kita/screens/saving_details/components/body.dart';
 
@@ -15,7 +16,8 @@ class SavingDetail extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.white),
           title: Text('Detail Simpanan Wajib',
               style: TextStyle(color: Colors.white)),
-          backgroundColor: Colors.lightGreen),
+          backgroundColor: kPrimaryColor),
+      backgroundColor: kBackgroundColor,
       body: Body(model),
     );
   }

@@ -1,64 +1,68 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:tabungan_kita/models/saving_model.dart';
 import 'package:tabungan_kita/models/user_model.dart';
 
 class DatabaseService {
   static var firebaseUser = FirebaseAuth.instance.currentUser;
-  static CollectionReference productColection =
+  static CollectionReference productCollection =
       FirebaseFirestore.instance.collection("products");
-  static CollectionReference usersColection =
+  static CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
-  static CollectionReference savingsColection =
+  static CollectionReference savingsCollection =
       FirebaseFirestore.instance.collection("savings");
+  static CollectionReference loansCollection =
+      FirebaseFirestore.instance.collection("loans");
 
   static Future<void> createOrUpdateProduct(
       String id, String name, int price, bool isMerged) async {
-    await productColection.doc(id).set({
+    await productCollection.doc(id).set({
       'nama': name,
       'harga': price,
     }, SetOptions(merge: isMerged));
   }
 
   static Future<DocumentSnapshot> getProduct(String id) async {
-    return await productColection.doc(id).get();
+    return await productCollection.doc(id).get();
   }
 
   static Future<void> deleteProduct(String id) async {
-    await productColection.doc(id).delete();
+    await productCollection.doc(id).delete();
   }
 
   static dynamic getSavings() {
-    return savingsColection
+    return savingsCollection
         .where("userId", isEqualTo: DatabaseService.firebaseUser.uid)
         .snapshots();
   }
 
-  static Future<List<SavingModel>> getSavingList() async {
-
+  static dynamic getLoans() {
+    return loansCollection
+        .where("userId", isEqualTo: DatabaseService.firebaseUser.uid)
+        .snapshots();
   }
 
   static void createOrUpdateUser(UserModel userModel, bool isMerged) async {
-    usersColection
+    usersCollection
         .doc(firebaseUser.uid)
         .set(userModel.toMap(), SetOptions(merge: isMerged));
   }
 
-  // static Future <DocumentSnapshot> getUser() async {
-  //   return await usersColection.doc(firebaseUser.uid).get();
-  // }
-
   static dynamic getUser() {
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser.uid)
-        .get()
-        .then((value) {
-      return value.data();
-    });
+    return usersCollection.doc(firebaseUser.uid)
+        .snapshots();
   }
 
+  // static dynamic getUser() {
+  //   FirebaseFirestore.instance
+  //       .collection("users")
+  //       .doc(FirebaseAuth.instance.currentUser.uid)
+  //       .get()
+  //       .then((value) {
+  //     return value.data();
+  //   });
+  // }
+
   static Future<void> deleteUser(String userId) async {
-    await usersColection.doc(userId).delete();
+    await usersCollection.doc(userId).delete();
   }
 }

@@ -1,24 +1,21 @@
 class SavingModel {
   String userId;
-  String month;
-  String year;
-  int bill;
+  DateTime savingDate;
+  int amount;
   String status;
 
-  SavingModel(this.userId, this.month, this.year, this.bill, this.status);
+  SavingModel(this.userId, this.savingDate, this.amount, this.status);
 
   Map<String, dynamic> toMap() => {
         "userId": userId,
-        "month": month,
-        "year": year,
-        "bill": bill,
+        "savingDate": savingDate,
+        "amount": amount,
         "status": status
       };
 
   SavingModel.fromMap(Map<String, dynamic> map)
       : userId = map['userId'],
-        month = map['month'],
-        year = map['year'],
-        bill = map['bill'],
+        savingDate = DateTime.parse(map['savingDate'].toDate().toString()),
+        amount = map['amount'],
         status = map['status'];
 }

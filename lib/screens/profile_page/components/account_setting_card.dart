@@ -5,6 +5,10 @@ import 'package:tabungan_kita/services/authentication_service.dart';
 import 'package:toast/toast.dart';
 
 class AccountSettingCard extends StatefulWidget {
+  final String email;
+
+  AccountSettingCard(this.email);
+
   @override
   _AccountSettingCardState createState() => _AccountSettingCardState();
 }
@@ -116,8 +120,7 @@ class _AccountSettingCardState extends State<AccountSettingCard> {
             ),
             TextFormField(
               autofocus: false,
-              initialValue: context
-                  .select((AuthenticationService auth) => auth.getEmail()),
+              initialValue: widget.email,
               enabled: false,
               decoration: InputDecoration(
                   labelText: "Email",

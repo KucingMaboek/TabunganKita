@@ -15,6 +15,7 @@ class UserModel {
 
   String email;
   String name;
+  String residentId;
   dynamic atm;
   String phone;
   String university;
@@ -23,30 +24,40 @@ class UserModel {
   String studentId;
   String memberStatus;
 
-  UserModel(this.email, this.name, this.atm, this.phone, this.university,
-      this.degree, this.major, this.studentId, this.memberStatus);
+  UserModel(
+      this.email,
+      this.name,
+      this.residentId,
+      this.atm,
+      this.phone,
+      this.university,
+      this.degree,
+      this.major,
+      this.studentId,
+      this.memberStatus);
 
   Map<String, dynamic> toMap() => {
         "email": this.email,
         "name": this.name,
+        "residentId": this.residentId,
         "atm": this.atm,
         "phone": this.phone,
         "university": this.university,
         "degree": this.degree,
         "major": this.major,
-        "student_id": this.studentId,
-        "member_status": this.memberStatus
+        "studentId": this.studentId,
+        "memberStatus": this.memberStatus
       };
 
-  UserModel.fromMap(Map<String, dynamic> map) {
-    email = map['email'];
-    name = map['name'];
-    atm = map['atm'];
-    phone = map['phone'];
-    university = map['university'];
-    degree = map['degree'];
-    major = map['major'];
-    studentId = map['student_id'];
-    memberStatus = map['member_status'];
-  }
+  UserModel.fromMap(Map<String, dynamic> map)
+      : email = map['email'],
+        name = map['name'],
+        residentId = map['residentId'],
+        atm = map['atm'],
+        phone = map['phone'],
+        university = map['university'],
+        degree = map['degree'],
+        major = map['major'],
+        studentId = map['studentId'],
+        memberStatus = map['memberStatus'];
 }
