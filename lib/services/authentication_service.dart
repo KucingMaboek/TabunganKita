@@ -1,4 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tabungan_kita/models/user_model.dart';
+import 'package:tabungan_kita/services/database_services.dart';
+import 'package:toast/toast.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth;
@@ -20,10 +23,13 @@ class AuthenticationService {
     }
   }
 
-  Future<String> signUp({String email, String password}) async {
+  Future<String> signUp({String email, String password, UserModel userModel}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((user) {
+            DatabaseService.createOrUpdateUser(user.user.uid, userModel, false);
+      });
       return "Signed up";
     } on FirebaseAuthException catch (e) {
       return e.message;

@@ -41,9 +41,9 @@ class DatabaseService {
         .snapshots();
   }
 
-  static void createOrUpdateUser(UserModel userModel, bool isMerged) async {
+  static void createOrUpdateUser(String userId, UserModel userModel, bool isMerged) async {
     usersCollection
-        .doc(firebaseUser.uid)
+        .doc(userId)
         .set(userModel.toMap(), SetOptions(merge: isMerged));
   }
 
