@@ -292,7 +292,8 @@ class _SignFormState extends State<SignForm> {
                       _degree,
                       _major,
                       _studentId,
-                      "Belum Aktivasi");
+                      "Belum Aktivasi",
+                      "");
 
                   // Make new user
                   context.read<AuthenticationService>().signUp(

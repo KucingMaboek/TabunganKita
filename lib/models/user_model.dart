@@ -23,6 +23,7 @@ class UserModel {
   String major;
   String studentId;
   String memberStatus;
+  String paymentUrl;
 
   UserModel(
       this.email,
@@ -34,7 +35,8 @@ class UserModel {
       this.degree,
       this.major,
       this.studentId,
-      this.memberStatus);
+      this.memberStatus,
+      this.paymentUrl);
 
   Map<String, dynamic> toMap() => {
         "email": this.email,
@@ -46,7 +48,8 @@ class UserModel {
         "degree": this.degree,
         "major": this.major,
         "studentId": this.studentId,
-        "memberStatus": this.memberStatus
+        "memberStatus": this.memberStatus,
+        "paymentUrl" : this.paymentUrl
       };
 
   UserModel.fromMap(Map<String, dynamic> map)
@@ -59,5 +62,6 @@ class UserModel {
         degree = map['degree'],
         major = map['major'],
         studentId = map['studentId'],
-        memberStatus = map['memberStatus'];
+        memberStatus = map['memberStatus'],
+        paymentUrl = map['paymentUrl'];
 }

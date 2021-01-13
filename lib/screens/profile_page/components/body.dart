@@ -24,15 +24,8 @@ class Body extends StatelessWidget {
                             UserModel.fromMap(snapshot.data.data());
                         return Column(
                           children: [
-                            MemberStatusCard(user.name, user.memberStatus),
-                            UserInformationCard(
-                                user.residentId,
-                                user.atm,
-                                user.phone,
-                                user.university,
-                                user.degree,
-                                user.major,
-                                user.studentId),
+                            MemberStatusCard(user),
+                            UserInformationCard(user),
                             AccountSettingCard(user.email),
                             ButtonTheme(
                               minWidth: MediaQuery.of(context).size.width,
