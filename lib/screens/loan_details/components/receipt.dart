@@ -68,7 +68,7 @@ class Receipt extends StatelessWidget {
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
           Text(
-            'Rp.' + model.amount.toString() + ',-',
+            'Rp. ' + model.amount.toString() + ',-',
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
         ]),

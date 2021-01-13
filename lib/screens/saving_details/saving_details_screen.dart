@@ -4,9 +4,10 @@ import 'package:tabungan_kita/models/saving_model.dart';
 import 'package:tabungan_kita/screens/saving_details/components/body.dart';
 
 class SavingDetail extends StatelessWidget {
+  final String id;
   final SavingModel model;
 
-  SavingDetail(this.model);
+  SavingDetail(this.id, this.model);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class SavingDetail extends StatelessWidget {
               style: TextStyle(color: Colors.white)),
           backgroundColor: kPrimaryColor),
       backgroundColor: kBackgroundColor,
-      body: Body(model),
+      body: Body(id, model),
     );
   }
 }

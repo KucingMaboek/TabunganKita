@@ -6,9 +6,10 @@ class LoanModel {
   String detail;
   int amount;
   String status;
+  String paymentUrl;
 
   LoanModel(this.userId, this.requestDate, this.returnDate, this.purpose,
-      this.detail, this.amount, this.status);
+      this.detail, this.amount, this.status, this.paymentUrl);
 
   Map<String, dynamic> toMap() => {
         'userId': userId,
@@ -17,7 +18,8 @@ class LoanModel {
         'purpose': purpose,
         'detail': detail,
         'amount': amount,
-        'status': status
+        'status': status,
+        'paymentUrl': paymentUrl
       };
 
   LoanModel.fromMap(Map<String, dynamic> map)
@@ -27,5 +29,6 @@ class LoanModel {
         purpose = map['purpose'],
         detail = map['detail'],
         amount = map['amount'],
-        status = map['status'];
+        status = map['status'],
+        paymentUrl = map['paymentUrl'];
 }

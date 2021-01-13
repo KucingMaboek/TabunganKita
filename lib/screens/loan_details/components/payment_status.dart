@@ -8,19 +8,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tabungan_kita/constants.dart';
-import 'package:tabungan_kita/models/user_model.dart';
+import 'package:tabungan_kita/models/loan_model.dart';
 import 'package:tabungan_kita/services/database_services.dart';
 
-class MemberStatusCard extends StatefulWidget {
-  final UserModel user;
+class PaymentStatus extends StatefulWidget {
+  final String id;
+  final LoanModel model;
 
-  MemberStatusCard(this.user);
+  PaymentStatus(this.id, this.model);
 
   @override
-  _MemberStatusCardState createState() => _MemberStatusCardState();
+  _PaymentStatusState createState() => _PaymentStatusState();
 }
 
-class _MemberStatusCardState extends State<MemberStatusCard> {
+class _PaymentStatusState extends State<PaymentStatus> {
   double imageHeight = 100;
 
   Future getImage() async {
@@ -40,25 +41,25 @@ class _MemberStatusCardState extends State<MemberStatusCard> {
       // Save image to firebase storage
       FirebaseStorage.instance
           .ref()
-          .child("primary_saving")
+          .child("loan")
           .child(DatabaseService.firebaseUser.uid)
+          .child(widget.id)
           .putFile(_image)
           .whenComplete(() => null)
           .then((storageTask) async {
         String link = await storageTask.ref.getDownloadURL();
-        widget.user.paymentUrl = link;
-        widget.user.memberStatus = "Sedang Ditinjau";
-        DatabaseService.createOrUpdateUser(
-            DatabaseService.firebaseUser.uid, widget.user, false);
+        widget.model.paymentUrl = link;
+        widget.model.status = "Sedang Ditinjau";
+        DatabaseService.createOrUpdateLoan(widget.id, widget.model, false);
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget _memberActivation() {
-      if (widget.user.memberStatus == "Belum Aktivasi" ||
-          widget.user.memberStatus == "Ditolak") {
+    Widget _paymentProof() {
+      if (widget.model.status == "Belum Membayar" ||
+          widget.model.status == "Pembayaran Ditolak") {
         return GestureDetector(
             onTap: getImage,
             child: Container(
@@ -85,7 +86,7 @@ class _MemberStatusCardState extends State<MemberStatusCard> {
                 ),
               ),
             ));
-      } else if (widget.user.memberStatus == "Sedang Ditinjau") {
+      } else if (widget.model.status == "Sedang Ditinjau") {
         return GestureDetector(
             onTap: () {
               setState(() {
@@ -96,7 +97,7 @@ class _MemberStatusCardState extends State<MemberStatusCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(kBorderRad),
               child: Image(
-                image: NetworkImage(widget.user.paymentUrl),
+                image: NetworkImage(widget.model.paymentUrl),
                 width: MediaQuery.of(context).size.width,
                 height: imageHeight,
                 fit: BoxFit.fitWidth,
@@ -119,17 +120,7 @@ class _MemberStatusCardState extends State<MemberStatusCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
-              trailing: widget.user.memberStatus != "Member"
-                  ? FaIcon(
-                      FontAwesomeIcons.userTimes,
-                      color: Colors.red,
-                    )
-                  : FaIcon(FontAwesomeIcons.userCheck, color: Colors.green),
-              title: Text(widget.user.name),
-              subtitle: Text(widget.user.memberStatus),
-            ),
-            _memberActivation(),
+            _paymentProof(),
           ],
         ),
       ),

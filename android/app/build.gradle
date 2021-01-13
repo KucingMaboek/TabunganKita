@@ -64,7 +64,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:18.0.0'
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
     implementation 'com.android.support:multidex:1.0.3'
-//    implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'com.google.firebase:firebase-storage:19.2.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

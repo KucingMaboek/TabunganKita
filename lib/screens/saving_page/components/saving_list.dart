@@ -19,9 +19,10 @@ class _SavingListState extends State<SavingList> {
         stream: DatabaseService.getSavings(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            final savingIDs = <String>[];
             final savingLists = <SavingModel>[];
             snapshot.data.docs.forEach((element) {
-              // print(element.data());
+              savingIDs.add(element.id);
               savingLists.add(SavingModel.fromMap(element.data()));
             });
             return ListView.builder(
@@ -40,11 +41,10 @@ class _SavingListState extends State<SavingList> {
                       trailing:
                           Text("Rp." + savingLists[index].amount.toString()),
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    SavingDetail(savingLists[index])));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return SavingDetail(savingIDs[index], savingLists[index]);
+                        }));
                       },
                     ),
                   );

@@ -6,7 +6,7 @@ import 'package:tabungan_kita/models/loan_model.dart';
 import 'package:tabungan_kita/screens/loan_details/loan_details_screen.dart';
 import 'package:tabungan_kita/services/database_services.dart';
 
-class LoanList extends StatefulWidget{
+class LoanList extends StatefulWidget {
   @override
   _LoanListState createState() => _LoanListState();
 }
@@ -18,12 +18,14 @@ class _LoanListState extends State<LoanList> {
         stream: DatabaseService.getLoans(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            final savingLists = <LoanModel>[];
+            final loanIDs = <String>[];
+            final loanLists = <LoanModel>[];
             snapshot.data.docs.forEach((element) {
-              savingLists.add(LoanModel.fromMap(element.data()));
+              loanIDs.add(element.id);
+              loanLists.add(LoanModel.fromMap(element.data()));
             });
             return ListView.builder(
-                itemCount: savingLists.length,
+                itemCount: loanLists.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 2,
@@ -31,17 +33,16 @@ class _LoanListState extends State<LoanList> {
                       borderRadius: BorderRadius.circular(kBorderRad),
                     ),
                     child: ListTile(
-                      title: Text(savingLists[index].purpose),
-                      subtitle: Text(savingLists[index].status),
+                      title: Text(loanLists[index].purpose),
+                      subtitle: Text(loanLists[index].status),
                       leading: FaIcon(FontAwesomeIcons.receipt),
                       trailing:
-                      Text("Rp." + savingLists[index].amount.toString()),
+                          Text("Rp." + loanLists[index].amount.toString()),
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    LoanDetail(savingLists[index])));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoanDetail(loanIDs[index], loanLists[index]);
+                        }));
                       },
                     ),
                   );
