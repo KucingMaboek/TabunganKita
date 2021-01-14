@@ -12,3 +12,11 @@ __Anggota Kelompok:__
 - 04 Nov 2020: add register page (without auth & form)
 - 18 Nov 2020: add navbar, import fontawesome dependencies, add default tab
 - 19 Nov 2020: implement listView to savingTab, work on saving detail template
+- 11 Dec 2020: add toast depedencies, add profile tab
+- 13 Dec 2020: add firebase core and auth depedencies, implement simple firebase auth ( sign in, forgot password, change password ), reformat some codes
+- 18 Dec 2020: reformatting, implement firebase auth register
+- 24 Dec 2020: implement firestore to saving page, add saving model, edit profile page
+- 25 Dec 2020: implement read profile data, saving, and loans
+- 11 Jan 2021: add registration without feedback
+- 13 Jan 2021: add user verification
+- 13 Jan 2021: add payment proof for loans and saving
