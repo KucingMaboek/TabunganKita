@@ -16,7 +16,7 @@ class _ResetFormState extends State<ResetForm> {
   Widget build(BuildContext context) {
       return FlatButton(
         child: Text(
-          "Forgot Password?",
+          "Lupa Password?",
           style: TextStyle(color: Colors.black54),
         ),
         onPressed: () {

@@ -49,13 +49,11 @@ class _SignFormState extends State<SignForm> {
             },
             decoration: InputDecoration(
                 counter: ResetForm(),
-                hintText: "ex: 123456",
+                hintText: "ex: 12345678",
                 labelText: "Password",
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(kBorderRad))),
-            // textInputAction: TextInputAction.next,
           ),
-          SizedBox(height: 24.0),
           ButtonTheme(
             minWidth: MediaQuery.of(context).size.width,
             child: RaisedButton(
@@ -73,7 +71,7 @@ class _SignFormState extends State<SignForm> {
               },
               color: kPrimaryColor,
               textColor: Colors.white,
-              child: Text('Sign In'.toUpperCase()),
+              child: Text('Masuk'.toUpperCase()),
             ),
           ),
         ],
