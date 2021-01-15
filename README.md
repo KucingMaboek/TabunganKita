@@ -20,3 +20,4 @@ __Anggota Kelompok:__
 - 11 Jan 2021: add registration without feedback
 - 13 Jan 2021: add user verification
 - 13 Jan 2021: add payment proof for loans and saving
+- 15 Jan 2021: polishing polishing sign in/sign up UI
